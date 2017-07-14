@@ -21,9 +21,12 @@ function getOneDriveItems() {
 	// not signed in, s/he is prompted to sign in.
 	Office.context.auth.getAccessTokenAsync({ forceConsent: false },
 		function (result) {
+             console.log(result);
+
             if (result.status === "succeeded") {
                 accessToken = result.value;
-                getData("/api/onedriveitems", accessToken);
+                // getData("/api/onedriveitems", accessToken);
+                console.log("accessToken: "+accessToken);
 			}
 			else {
 				console.log("Code: " + result.error.code);

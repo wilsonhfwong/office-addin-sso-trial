@@ -15,28 +15,29 @@ import { AuthModule } from './auth';
 import { MSGraphHelper} from './msgraph-helper';
 
 /* Set the environment to development if not set */
-const env = process.env.NODE_ENV || 'development';
+// const env = process.env.NODE_ENV || 'development';
+const env = 'development';
 
 /* Instantiate AuthModule to assist with JWT parsing and verification, and token acquisition. */
 const auth = new AuthModule(
     /* These values are required for our application to exhcange and get access to the resource data */
-    /* client_id */ '{client GUID}',
-    /* client_secret */ '{client secret}',
+    /* client_id */ '3307d1d2-005a-4303-8cc3-d656ede1d918',
+    /* client_secret */ 'zcvriD9zdeaBzKmJ9Lpmska',
 
     /* This information tells our server where to download the signing keys to validate the JWT that we received,
      * and where to get tokens. This is not configured for multi tenant; i.e., it is assumed that the source of the JWT and our application live
      * on the same tenant.
      */
-    /* tenant */ 'common',
+    /* tenant */ /*'common' */ '29abf16e-95a2-4d13-8d51-6db1b775d45b',
     /* stsDomain */ 'https://login.microsoftonline.com',
     /* discoveryURLsegment */ '.well-known/openid-configuration',
     /* tokenURLsegment */ '/oauth2/v2.0/token',
 
     /* Token is validated against the following values: */
     // Audience is the same as the client ID because, relative to the Office host, the add-in is the "resource".
-    /* audience */ '{audience GUID}', 
+    /* audience */ '3307d1d2-005a-4303-8cc3-d656ede1d918', 
     /* scopes */ ['access_as_user'],
-    /* issuer */ 'https://login.microsoftonline.com/{O365 tenant GUID}/v2.0',
+    /* issuer */ 'https://login.microsoftonline.com/29abf16e-95a2-4d13-8d51-6db1b775d45b/v2.0',
 );
 
 /* A promisified express handler to catch errors easily */

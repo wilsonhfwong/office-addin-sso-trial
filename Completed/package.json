@@ -13,7 +13,7 @@
     "cpx-w": "cpx \"./src/**/!(*.ts)\" dist --watch",
     "generate": "npm-run-all clean -p tsc cpx",
     "build": "npm-run-all clean -p tsc-w cpx-w",
-    "start": "nodemon dist/server.js --debug=5858"
+    "start": "set NODE_ENV=development && nodemon dist/server.js --debug=5858"
   },
   "version": "1.0.0",
   "license": "MIT",
